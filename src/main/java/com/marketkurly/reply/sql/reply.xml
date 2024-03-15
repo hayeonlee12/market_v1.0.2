@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Reply">
+	<insert id="addReply" parameterType="ReplyDTO">
+		INSERT INTO TBL_REVIEW VALUES (#{productid}, #{userid}, #{username}, #{anndate}, #{anndetail})
+	</insert>
+	
+	<select id="getReply" parameterType="_int" resultType="ReplyDTO">
+		SELECT * FROM TBL_REVIEW WHERE PRODUCTID = #{productid}
+	</select>
+	
+	<update id="updateReply" parameterType="hashmap">
+		UPDATE TBL_REVIEW SET ANNDETAIL = #{anndetail} 
+		WHERE PRODUCTID = #{productid}
+	</update>
+	
+	<delete id="deleteReply" parameterType="_int">
+		DELETE FROM TBL_REVIEW WHERE PRODUCTID = #{productid}
+	</delete>
+	
+</mapper>

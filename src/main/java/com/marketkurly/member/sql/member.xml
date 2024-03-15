@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<select id="checkId" parameterType="string" resultType="_int">
+		SELECT count(*) FROM TBL_USER WHERE USERID = #{userid}
+	</select>
+	
+	<select id="checkEmail" parameterType="string" resultType="_int">
+		SELECT count(*) FROM TBL_USER WHERE USEREMAIL = #{useremail}
+	</select>
+	
+	<insert id = "join" parameterType = "com.marketkurly.member.dao.MemberDTO">
+		INSERT INTO TBL_USER VALUES (#{userid}, #{userpw}, #{username}, #{useremail}, #{userphone}, 
+											#{useraddress}, #{userbirth}, #{locbasic})
+	</insert>
+	
+	<insert id = "insertLocTable" parameterType = "com.market.DTO.LocationDTO">
+		INSERT INTO TBL_LOCATION (LOCATIONID, USERID, LOCADDR, LOCNAME, LOCPHONE, LOCBASIC) VALUES(SEQ_LOCATIONID.nextval, #{userid}, #{locaddr}, #{locname}, #{locphone}, #{locbasic})
+	</insert>
+</mapper>

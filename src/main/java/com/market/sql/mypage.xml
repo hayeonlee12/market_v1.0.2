@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mypage">
+	<select id="confirm" resultType="_int" parameterType="hashmap">
+		select count(*) from tbl_user where userid = #{userid} and userpw = #{userpw}
+	</select>
+	<select id="dupCheck" resultType="_int" parameterType="String">
+		select count(*) from tbl_user where useremail = #{useremail}
+	</select>
+	<select id="locationList" resultType="LocationDTO" parameterType="String">
+		select * from tbl_location where userid = #{userid} order by locbasic desc
+	</select>	
+	<update id="locBasicUpdate1" parameterType="String">
+		UPDATE TBL_LOCATION
+		SET LOCBASIC= '0'
+		WHERE USERID = #{USERID} AND LOCBASIC = '1'
+	</update>
+	<update id="locBasicUpdate2" parameterType="String">
+		UPDATE TBL_LOCATION
+		SET locbasic= '1'
+		WHERE LOCATIONID =#{locationid }
+	</update>
+	<insert id="newLocation" parameterType="hashmap">
+		INSERT INTO TBL_LOCATION
+		(LOCATIONID, USERID, LOCADDR, LOCNAME, LOCPHONE, LOCBASIC)
+		VALUES(SEQ_LOCATIONID.NEXTVAL, #{userid}, #{locaddr}, '', '', #{locbasic})
+	</insert>
+	<update id="locInfoModify" parameterType="hashmap">
+		UPDATE TBL_LOCATION
+		SET locname = #{locname}, locphone = #{locphone}
+		WHERE LOCATIONID =#{locationid }
+	</update>
+	<delete id="locInfoDel" parameterType="String">
+		delete from tbl_location where locationid = #{locationid }
+	</delete>
+	<delete id="userDelete" parameterType="String">
+		delete from tbl_user where userid = #{userid }
+	</delete>
+	<update id="userModify" parameterType="hashmap">
+		update tbl_user set username= #{username }, useremail= #{useremail }, userpw = #{userpw } where userid = #{userid }
+	</update>
+	<update id="userModify2" parameterType="hashmap">
+		update tbl_user set username= #{username }, useremail= #{useremail } where userid = #{userid }
+	</update>
+	<select id="userInfoGet" resultType="UserDTO" parameterType="String">
+		select * from tbl_user where userid = #{userid }
+	</select>
+	<select id="purchaseHistory" resultType="OrderDTO" parameterType="String">
+		select * from tbl_order where userid = #{userid } order by oderid desc
+	</select>
+	<select id="selectLocBasic" resultType="LocationDTO" parameterType="String">
+		select * from tbl_location where userid = #{userid} and locbasic = '1'
+	</select>
+	<select id="zzimList" resultType="ZzimJoinProductDTO" parameterType="String">
+		select a.ZZIMID, a.USERID, a.PRODUCTID , b.PRODUCTNAME, b.PRICE, b.PRODUCTIMG 
+		from tbl_zzim a INNER JOIN tbl_product b ON a.PRODUCTID = b.PRODUCTID 
+		where userid = #{userid } order by zzimid desc
+	</select>
+	<select id="reviewList" resultType="ReviewJoinUserDTO" parameterType="String">
+		SELECT
+			a.reviewid,
+			a.productid,
+			a.userid,
+			b.username,
+			a.anndate,
+			a.anndetail,
+			substr(a.anndetail,0,10) AS anntitle
+		FROM
+			TBL_REVIEW a
+		INNER JOIN tbl_user b ON
+			a.userid = b.userid
+		WHERE
+			a.userid = #{userid }
+		ORDER BY
+			reviewid DESC
+	</select>
+</mapper>

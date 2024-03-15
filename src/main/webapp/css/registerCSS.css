@@ -1,0 +1,174 @@
+@charset "UTF-8";
+
+/*ID별 */
+
+#register {
+/* 	text-align:center; */
+	
+	margin-top:50px;
+	margin-bottom:60px;
+	
+}
+
+#registertitle{
+	font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+	font-size:28px;
+}
+
+#registerhr{
+/* 	width:40%; */
+	
+/* 	margin-left:450px; */
+	
+	height:2px;
+	background-color:#000000;
+}
+
+#registerlink{
+	margin-left:40px;
+	color:rgb(95,0,128);
+}
+
+
+#important {
+	color:red;
+	
+	font-size:12px;
+	
+	margin-left:500px;
+}
+
+#inputbox {
+	width:320px;
+	height:45px;
+	
+	margin-left: 75px;
+}
+
+#buttonbox{
+	width:140px;
+	height:45px;
+	
+	border: 1px solid rgb(95, 0, 128);
+	background-color:rgb(255, 255, 255);
+	
+	color:rgb(95, 0, 128);
+	
+	font-weight:bold;
+	
+}
+
+
+#passwordRebox{
+	width:320px;
+	height:45px;
+	
+	margin-left: 28px;
+}
+
+#namebox{
+	width:320px;
+	height:45px;
+	
+	margin-left: 90px;
+}
+
+#addressbox{
+	width:325px;
+	height:45px;
+	
+	border: 1px solid rgb(95, 0, 128);
+	background-color:rgb(255, 255, 255);
+	
+	color:rgb(95, 0, 128);
+	
+	font-weight:bold;
+	
+	margin-left:90px;
+}
+
+#addressbox1{
+	width:125px;
+	height:45px;
+	
+	border: 1px solid rgb(95, 0, 128);
+	background-color:rgb(255, 255, 255);
+	
+	color:rgb(95, 0, 128);
+	
+	font-weight:bold;
+	
+}
+
+
+#birthbox{
+	width:320px;
+	height:45px;
+	
+	margin-left:60px;
+}
+
+#2nd {
+	width:40%;
+	margin-left:30px;
+}
+
+#add{
+	margin-left:26px;	
+}
+
+#info{
+	font-size:12px;
+	
+	color:#333333;
+	
+	margin-left:28px;
+}
+
+#submit{
+	width:140px;
+	height:45px;
+	
+	background-color:rgb(95, 0, 128);
+	
+	color:rgb(255, 255, 255);
+	
+	font-weight:bold;
+	
+	margin-left:650px;
+	
+}
+
+
+
+
+/*class별 */
+
+.input{
+/* 	text-align:left; */
+	margin-left:460px;
+	
+	font-weight:bold;
+	font-size:14px;
+}
+
+
+
+span.error { 
+	color:tomato;  
+	position:absolute; 
+	font-size:12px;
+	margin-top:50px;
+	margin-left:-320px;
+}
+
+alert{
+	width:325px;
+	height:45px;
+	
+	background-color:rgb(255,255,255);
+	
+	font-weight:bold;
+	
+}
+

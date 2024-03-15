@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Basket">
+	<select id="listBasket" resultType="BasketListDTO" parameterType="String">
+		SELECT A.CARTID, A.USERID, A.PRODUCTID, A.ORDERCOUNT, B.PRODUCTNAME, B.PRICE, B.PRODUCTIMG 
+		FROM TBL_CART A LEFT OUTER JOIN TBL_PRODUCT B  
+		ON A.PRODUCTID  = B.PRODUCTID 
+		WHERE userid = #{userid}
+	</select>
+	<delete id="deleteBasket" parameterType="String">
+		DELETE FROM TBL_CART WHERE CARTID = #{cartid} 
+	</delete>
+	<update id="countCntUpdate" parameterType="hashmap">
+		UPDATE TBL_CART
+		SET ORDERCOUNT = #{ordercount}
+		WHERE CARTID = #{cartid}
+	</update>
+	<insert id="purchaseHistoryStore" parameterType="hashmap">
+		INSERT INTO TBL_ORDER
+		(ODERID, USERID, PRODUCTID, PAYMENT, ORDERDATE)
+		VALUES(SEQ_ORDERID.NEXTVAL, #{userid}, '', #{payment}, SYSDATE)
+	</insert>
+</mapper>

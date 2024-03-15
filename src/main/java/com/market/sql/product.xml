@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Product">
+	<select id="categorylProductView" resultType="ProductDTO" parameterType="String">
+		select * from tbl_product where PRODCATEGORY = #{prodcategory}
+	</select>
+	<select id="totalProductView" resultType="ProductDTO">
+		select * from tbl_product
+	</select>
+	<select id="prodGetInfo" resultType="ProductDTO" parameterType="String">
+		select * from tbl_product where productid = #{productid }
+	</select>
+	<insert id="inCart" parameterType="BasketDTO">
+		INSERT INTO TBL_cart VALUES (SEQ_productid.nextval, #{userid}, #{productid}, #{ordercount})
+	</insert>
+	<insert id="insertZzim" parameterType="hashmap">
+		INSERT INTO TBL_zzim VALUES (SEQ_zzimid.nextval, #{userid}, #{productid})
+	</insert>
+	<delete id="deleteZzim" parameterType="hashmap">
+		delete from TBL_zzim where userid = #{userid} and productid = #{productid}
+	</delete>
+	<select id="getZzimYN" resultType="_int" parameterType="hashmap">
+		select count(*) from TBL_zzim where userid = #{userid} and productid = #{productid}
+	</select>
+</mapper>

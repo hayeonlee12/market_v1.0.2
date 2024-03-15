@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inquiry">  <!-- 이름만 맞추고 아래에 sql문 설정 스타트 -->
+	<insert id="insertinquiry" parameterType="inquirybean">
+		INSERT INTO TBL_INQURY  VALUES (inqury_seq.nextval, #{userid} , #{inqtitle}, '' , #{inqcategory}, #{inqcontent}, '' , sysdate)
+	</insert>
+	
+	<select id="getinquiryList" parameterType="hashmap" resultType="inquirybean">
+		SELECT * FROM (
+			SELECT rownum r, A.* FROM (SELECT * FROM TBL_INQURY ORDER BY inqid DESC) A ) B  WHERE B.r BETWEEN #{startRow} AND #{endRow}
+			
+	</select>
+	
+	<select id="getinquiryCnt" resultType="_int">
+		SELECT COUNT(*) FROM tbl_inqury
+	</select>
+
+	<select id="getDetail" parameterType="string" resultType="inquirybean">
+		SELECT * FROM tbl_inqury WHERE inqid = #{'inqid'}
+	</select>
+	
+<!-- 	<update id="updateReadCount" parameterType="string"> -->
+<!-- 		UPDATE tbl_board SET BOARDREADCOUNT = BOARDREADCOUNT +1 WHERE inqid = #{inqid} -->
+<!-- 	</update> -->
+</mapper>
+
+
+
+
+
+
+

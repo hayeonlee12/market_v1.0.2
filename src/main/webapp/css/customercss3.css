@@ -1,0 +1,88 @@
+body {
+/*     padding:1.5em; */
+    background: #ffffff;
+    margin-left: 25%;
+  }
+
+  #center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #customer thead {
+    /* 헤드 컬러 */
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background: rgb(95, 0, 128);
+    
+  }
+
+  #customer {
+    /* 테이블 전체 세팅 */
+    border: 1px;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    /* 사이즈 25프로 조절 */
+    width: 170px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  /* 마우스 tr영역 위로 올라가면 색상 변경 */
+  #customer tbody tr:hover {
+    background: rgba(101, 99, 102, 0.184);
+   }
+   /* 마우스 tr의 td영역위로 올라가면 글자 컬러 변경 */
+   #customer tbody tr:hover td {
+    color:rgb(95, 0, 128);
+    font-weight: 600;
+   }
+  
+  #customer th {
+    /* 헤드텍스트 */
+    text-align: left;
+  }
+    
+    
+  #customer td, th {
+    /* 글자 테두리 패딩 텍스트 위치 */
+    padding: 1em 1em;
+    vertical-align: middle;
+    text-align: left;
+  }
+    
+  #customer td {
+    border-bottom: 1px solid rgba(135, 89, 89, 0.1);
+    color: rgb(0, 0, 0);
+  }
+  
+  /* 아이콘 위치 설정 */
+  #customer .icon1 {
+    position: static;
+    float: right;
+  }
+  
+
+  #noticeboard {
+    border-top: 1px solid #000000;
+    border-collapse: collapse;
+  }
+
+  #noticeboard th, td {
+    border-bottom: 1px solid #00000063;
+    padding: 10px;
+  }
+  
+  #inquirybtn {
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 120px;
+    height: 44px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(95, 0, 128);
+    border: 0px none;
+  }
